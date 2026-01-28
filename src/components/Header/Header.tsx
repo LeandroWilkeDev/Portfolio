@@ -7,7 +7,7 @@ const socialLinks = [
 
 export default function Header() {
   return (
-    <header data-aos-duration="1000" data-aos="fade-down" className="w-full max-w-full bg-[var(--color-react-card)]/80 backdrop-blur-lg fixed top-0 left-0 z-50 shadow-md border-b border-[var(--color-react-border)] flex items-center justify-between p-5 overflow-x-hidden box-border">
+    <header data-aos-duration="1000" data-aos="fade-down" className="w-full max-w-full bg-[var(--color-react-card)]/80 backdrop-blur-lg fixed top-0 left-0 z-50 shadow-md border-b border-[var(--color-react-border)] flex items-center justify-between py-5 px-20  overflow-x-hidden box-border">
         <span className="font-extrabold text-2xl bg-gradient-to-r from-[var(--color-react-blue)] via-[var(--color-react-cyan)] to-[var(--color-react-purple)] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
           Leandro Wilke
         </span>

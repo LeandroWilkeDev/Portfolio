@@ -1,10 +1,10 @@
 
 import './App.css';
-import Header from './components/Header';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import About from './components/AboutMe/AboutMe';
+import Skills from './components/Skills/Skills';
+import Projects from './components/Projects/Projects';
+import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -22,19 +22,19 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="App bg-[var(--color-react-background)] min-h-screen w-full flex flex-col items-center box-border overflow-x-hidden">
       <Header />
-      <main className="flex flex-col items-center pt-24 w-full">
+      <main className="flex flex-col items-center">
         {/* Seção Sobre Mim */}
-        <section id="about" className="mb-20 scroll-mt-30 mt-6 w-full">
+        <section id="about" className=" w-full ">
           <About />
         </section>
         {/* Seção Skills */}
-        <section id="skills" className="mb-20 scroll-mt-25  w-full">
+        <section id="skills" className=" w-full ">
           <Skills />
         </section>
         {/* Seção Projetos */}
-        <section id="projects" className="mb-20 scroll-mt-24">
+        <section id="projects" className="mb-20">
           <Projects />
         </section>
       </main>

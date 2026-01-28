@@ -1,9 +1,9 @@
-import React from "react";
+import Button from "../Button/Button";
 
 const projects = [
   {
     title: "Portfólio Pessoal",
-    description: "Site pessoal para apresentar minhas habilidades, projetos e trajetória como desenvolvedor frontend.",
+    description: "Site pessoal para apresentar minhas habilidades, como desenvolvedor frontend.",
     image: "/assets/portfolio.png",
     live: "https://leandrowilke.dev",
     github: "https://github.com/leandrowilke/portfolio"
@@ -26,8 +26,11 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div id="projects" style={{scrollMarginTop: '96px'}} className="flex flex-col items-center gap-8 w-full max-w-full overflow-x-hidden overflow-visible box-border">
-      <h2 className="text-3xl font-bold mb-4 section-title-shadow" data-aos-duration="1000" data-aos="fade-down">Projetos</h2>
+    <div id="projects" className="flex flex-col items-center justify-center min-h-screen box-border">
+      <h2 className="text-4xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 drop-shadow-lg section-title-shadow" data-aos-duration="1000" data-aos="fade-down">
+        <span className="inline-block align-middle mr-2">💡</span>
+        Projetos em Destaque
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto min-h-0 overflow-y-clip">
         {projects.map((project, idx) => {
           const aosList = ["fade-right", "fade-up", "fade-left"];
@@ -43,8 +46,8 @@ export default function Projects() {
               <h3 className="text-xl font-semibold text-(--color-react-blue)">{project.title}</h3>
               <p className="text-(--color-react-text) text-center mb-4">{project.description}</p>
               <div className="flex gap-4">
-                <a href={project.live} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg bg-(--color-react-cyan) text-white font-medium shadow hover:bg-(--color-react-blue) transition">Visualizar Online</a>
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg bg-linear-to-r from-(--color-react-blue) via-(--color-react-cyan) to-(--color-react-purple) text-white font-medium shadow hover:from-(--color-react-cyan) hover:to-(--color-react-purple) transition">Ver GitHub</a>
+                <Button onClick={() => window.open(project.live, "_blank")}>Ver Online</Button>  
+                <Button onClick={() => window.open(project.github, "_blank")}>Ver GitHub</Button>
               </div>
             </div>
           );
