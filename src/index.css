@@ -1,16 +1,24 @@
 /* Text shadow para títulos das seções */
 .section-title-shadow {
-  text-shadow: 0 2px 12px rgba(56, 189, 248, 0.35), 0 1px 2px rgba(0,0,0,0.18);
+  text-shadow:
+    0 2px 12px rgba(56, 189, 248, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.18);
 }
 /* Fade-in suave para o footer */
 .footer-fade-in {
   opacity: 0;
-  animation: footerFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  animation: footerFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes footerFadeIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /* Underline animado para botões do header */
 .nav-underline {
@@ -19,17 +27,18 @@
   cursor: pointer;
 }
 .nav-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -2px;
   width: 0%;
   height: 2px;
   background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 100%);
-  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 2px;
 }
-.nav-underline:hover::after, .nav-underline:focus::after {
+.nav-underline:hover::after,
+.nav-underline:focus::after {
   width: 100%;
 }
 @import "tailwindcss";
@@ -42,12 +51,17 @@
   color: #eaf6fb;
   background-color: #181c24;
 
-  --color-react-blue:#58c4dc;
-  --color-react-blue-dark:#087ea4;
+  --color-react-blue: #58c4dc;
+  --color-react-blue-dark: #087ea4;
   --color-react-cyan: #21a1f3;
   --color-react-purple: #82a3ea;
   --color-react-bg: #181c24;
-  --color-react-bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  --color-react-bg-gradient: linear-gradient(
+    135deg,
+    #0f2027 0%,
+    #203a43 50%,
+    #2c5364 100%
+  );
   --color-react-border: #61dafb33;
   --color-react-card: #22304a;
   --color-react-text: #eaf6fb;
@@ -57,7 +71,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 body {
   @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white;
@@ -70,13 +83,44 @@ body {
   justify-content: center;
 }
 
+/* Responsividade global para seções principais */
+section {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (max-width: 640px) {
+  .section-title-shadow {
+    font-size: 1.5rem !important;
+    text-align: center;
+  }
+  h1,
+  h2,
+  h3 {
+    font-size: 1.2rem !important;
+    text-align: center;
+  }
+  #cardProject {
+    min-width: 0;
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 1rem !important;
+  }
+  .footer-fade-in {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
 #cardProject {
-  
 }
 #cardProject:hover {
   transition: all 0.3s ease-in-out;

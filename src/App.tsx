@@ -1,4 +1,6 @@
 
+
+// Componente principal da aplicação
 import './App.css';
 import Header from './components/Header/Header';
 import About from './components/AboutMe/AboutMe';
@@ -8,9 +10,11 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
+  // Controla a exibição do footer conforme o scroll
   const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
+    // Função para verificar se o usuário chegou ao final da página
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const pageHeight = document.body.offsetHeight;
@@ -23,6 +27,7 @@ function App() {
 
   return (
     <div className="App bg-[var(--color-react-background)] min-h-screen w-full flex flex-col items-center box-border overflow-x-hidden">
+      {/* Cabeçalho fixo */}
       <Header />
       <main className="flex flex-col items-center">
         {/* Seção Sobre Mim */}
@@ -40,6 +45,7 @@ function App() {
       </main>
       {/* Espaço para não sobrepor conteúdo pelo footer fixo */}
       <div className="h-20" />
+      {/* Exibe o footer apenas ao final da página */}
       {showFooter && <Footer />}
     </div>
   );

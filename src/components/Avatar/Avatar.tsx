@@ -1,5 +1,7 @@
 
 
+
+// Componente de avatar do usuário
 export default function Avatar() {  
     return (
         <img

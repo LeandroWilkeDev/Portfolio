@@ -1,4 +1,7 @@
+
+// Importa hooks do React
 import React, { useRef, useEffect, useState } from "react";
+// Importa ícones das skills
 import htmlIcon from "../../assets/html-5.svg";
 import cssIcon from "../../assets/css3.svg";
 import jsIcon from "../../assets/javascript.svg";
@@ -9,9 +12,12 @@ import reactIcon from "../../assets/react.svg";
 import sassIcon from "../../assets/sass.svg";
 import styledIcon from "../../assets/styled-components.svg";
 import githubIcon from "../../assets/github.svg";
-import styles from "./Skills.module.scss";
+// Importa estilos CSS Modules
 
-// Mapeamento dos ícones e cores das skills
+import styles from "./Skills.module.scss";
+import CircularProgress from "./CircularProgress";
+
+// Mapeamento dos ícones e cores das skills para exibição
 const skillIcons = {
   HTML: { src: htmlIcon, color: "#E44D26" },
   CSS: { src: cssIcon, color: "#1172B8" },
@@ -24,10 +30,13 @@ const skillIcons = {
   "Styled Components": { src: styledIcon, color: "#DB7093" },
   GitHub: { src: githubIcon, color: "#181717" },
 };
+
+// Importa biblioteca de animação AOS
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// Lista de skills e seus percentuais de domínio
 const skills = [
   { name: "HTML", percent: 95 },
   { name: "CSS", percent: 90 },
@@ -41,6 +50,8 @@ const skills = [
   { name: "GitHub", percent: 80 },
 ];
 
+
+// Hook customizado para detectar se o elemento está visível na tela
 function useInView(ref: React.RefObject<HTMLDivElement>) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -54,16 +65,21 @@ function useInView(ref: React.RefObject<HTMLDivElement>) {
   return inView;
 }
 
+
+// Componente principal da seção de Skills
 export default function Skills() {
+  // Referência para a seção de skills
   const sectionRef = useRef<HTMLDivElement>(null);
+  // Detecta se a seção está visível na tela
   // @ts-ignore
   const inView = useInView(sectionRef as React.RefObject<HTMLDivElement>);
 
+  // Inicializa animações AOS ao montar o componente
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
 
-  // Hook para animar o número da barra
+  // Hook para animar o número da barra de skill
   function useAnimatedNumber(target: number, trigger: boolean, duration = 1000) {
     const [value, setValue] = useState(0);
     useEffect(() => {
@@ -87,18 +103,41 @@ export default function Skills() {
     return value;
   }
 
-  // Divide as skills em duas colunas
+  // Divide as skills em duas colunas para layout responsivo
   const half = Math.ceil(skills.length / 2);
   const leftSkills = skills.slice(0, half);
   const rightSkills = skills.slice(half);
 
   return (
     <div className="min-h-screen w-full max-w-7xl mx-auto px-6 flex flex-col items-center justify-center" ref={sectionRef} id="skills">
-      <h2 className="text-4xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-purple-500 drop-shadow-lg section-title-shadow" data-aos-duration="1000" data-aos="fade-up">
+      {/* Título da seção */}
+      <h2 className="text-6xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-purple-500 drop-shadow-lg section-title-shadow" data-aos-duration="1000" data-aos="fade-up">
         <span className="inline-block align-middle mr-2">🚀</span>
         Minhas Skills
       </h2>
-      <div className="w-full flex flex-col md:flex-row gap-8 items-start justify-center">
+      {/* Mobile: skills circulares */}
+      <div className="w-full flex flex-col gap-8 items-center justify-center sm:hidden">
+        <div className="grid grid-cols-2 gap-6 w-full max-w-xs mx-auto">
+          {skills.map((skill, idx) => {
+            const animatedPercent = useAnimatedNumber(skill.percent, inView, 1000);
+            const icon = skillIcons[skill.name as keyof typeof skillIcons];
+            return (
+              <div key={skill.name} className="flex flex-col items-center justify-center gap-2" data-aos="fade-up" data-aos-delay={idx * 100}>
+                <CircularProgress percent={animatedPercent} color={icon?.color || '#2563eb'} size={72} strokeWidth={7}>
+                  <span>{animatedPercent}%</span>
+                </CircularProgress>
+                {icon && (
+                  <img src={icon.src} alt={skill.name + ' icon'} style={{ width: 28, height: 28, minWidth: 28 }} />
+                )}
+                <span className="font-bold text-base text-center" style={{ color: 'var(--color-react-text)' }}>{skill.name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {/* Desktop/tablet: barras lineares */}
+      <div className="hidden sm:flex w-full flex-col md:flex-row gap-8 items-start justify-center">
+        {/* Coluna da esquerda */}
         <div className="flex-1 flex flex-col gap-6">
           {leftSkills.map((skill, idx) => {
             const animatedPercent = useAnimatedNumber(skill.percent, inView, 1000);
@@ -127,6 +166,7 @@ export default function Skills() {
             );
           })}
         </div>
+        {/* Coluna da direita */}
         <div className="flex-1 flex flex-col gap-6">
           {rightSkills.map((skill, idx) => {
             const animatedPercent = useAnimatedNumber(skill.percent, inView, 1000);
