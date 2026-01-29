@@ -24,7 +24,7 @@ export default function Home() {
       {/* Botões de ação */}
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full max-w-xs sm:max-w-full mx-auto">
         <Button onClick={() => window.open('/LeandroWilkeCV.pdf', '_blank')}>Download CV</Button>
-        <Button onClick={() => window.open('mailto:leandro@email.com')}>Entrar em contato</Button>
+        <Button onClick={() => window.open('whatsapp://send?phone=+5581982352681')}>Entrar em contato</Button>
       </div>
     </section>
   );
