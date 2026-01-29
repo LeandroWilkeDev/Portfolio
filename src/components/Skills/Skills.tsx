@@ -10,7 +10,7 @@ import tailwindIcon from "../../assets/tailwind.svg";
 import gitIcon from "../../assets/git.svg";
 import reactIcon from "../../assets/react.svg";
 import sassIcon from "../../assets/sass.svg";
-import styledIcon from "../../assets/styled-components.svg";
+import styledIcon from "../../assets/CSS in JS.svg";
 import githubIcon from "../../assets/github.svg";
 // Importa estilos CSS Modules
 
@@ -23,11 +23,11 @@ const skillIcons = {
   CSS: { src: cssIcon, color: "#1172B8" },
   JavaScript: { src: jsIcon, color: "#f7df1e" },
   TypeScript: { src: tsIcon, color: "#007ACC" },
-  "Tailwind CSS": { src: tailwindIcon, color: "#44a8b3" },
+  "Tailwind": { src: tailwindIcon, color: "#44a8b3" },
   Git: { src: gitIcon, color: "#EE513B" },
   "React JS": { src: reactIcon, color: "#00D8FF" },
   Sass: { src: sassIcon, color: "#CD6799" },
-  "Styled Components": { src: styledIcon, color: "#DB7093" },
+  "CSS in JS": { src: styledIcon, color: "#DB7093" },
   GitHub: { src: githubIcon, color: "#181717" },
 };
 
@@ -42,11 +42,11 @@ const skills = [
   { name: "CSS", percent: 90 },
   { name: "JavaScript", percent: 85 },
   { name: "TypeScript", percent: 80 },
-  { name: "Tailwind CSS", percent: 80 },
+  { name: "Tailwind", percent: 80 },
   { name: "Git", percent: 75 },
   { name: "React JS", percent: 85 },
   { name: "Sass", percent: 75 },
-  { name: "Styled Components", percent: 70 },
+  { name: "CSS in JS", percent: 70 },
   { name: "GitHub", percent: 80 },
 ];
 
@@ -111,23 +111,35 @@ export default function Skills() {
   return (
     <div className="min-h-screen w-full max-w-7xl mx-auto px-6 flex flex-col items-center justify-center" ref={sectionRef} id="skills">
       {/* Título da seção */}
-      <h2 className="text-6xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-purple-500 drop-shadow-lg section-title-shadow" data-aos-duration="1000" data-aos="fade-up">
+      <h2 className="lg:text-6xl md:text-5xl  font-extrabold mt-10 mb-10 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-purple-500 drop-shadow-lg section-title-shadow" data-aos-duration="1000" data-aos="fade-up">
         <span className="inline-block align-middle mr-2">🚀</span>
         Minhas Skills
       </h2>
-      {/* Mobile: skills circulares */}
+      {/* Mobile: skills circulares com estilo neon */}
       <div className="w-full flex flex-col gap-8 items-center justify-center sm:hidden">
-        <div className="grid grid-cols-2 gap-6 w-full max-w-xs mx-auto">
+        <div className="grid grid-cols-3 gap-4 w-full mx-auto">
           {skills.map((skill, idx) => {
             const animatedPercent = useAnimatedNumber(skill.percent, inView, 1000);
             const icon = skillIcons[skill.name as keyof typeof skillIcons];
             return (
-              <div key={skill.name} className="flex flex-col items-center justify-center gap-2" data-aos="fade-up" data-aos-delay={idx * 100}>
-                <CircularProgress percent={animatedPercent} color={icon?.color || '#2563eb'} size={72} strokeWidth={7}>
-                  <span>{animatedPercent}%</span>
-                </CircularProgress>
+              <div key={skill.name} style={{ position: 'relative' }} className="flex flex-col items-center justify-center gap-2" data-aos="fade-up" data-aos-delay={idx * 100}>
+                <div className={styles.circularProgressMobile}>
+                  <CircularProgress percent={animatedPercent} color="#00f0ff" size={80} strokeWidth={8} bgColor="#0a192f">
+                    <span className={styles.circularProgressMobileText}>{animatedPercent}%</span>
+                  </CircularProgress>
+                </div>
                 {icon && (
-                  <img src={icon.src} alt={skill.name + ' icon'} style={{ width: 28, height: 28, minWidth: 28 }} />
+                  <img
+                    src={icon.src}
+                    alt={skill.name + ' icon'}
+                    style={{
+                      width: 28,
+                      height: 28,
+                      minWidth: 28,
+                      background: skill.name === 'CSS in JS' ? '#fff' : undefined,
+                      borderRadius: skill.name === 'CSS in JS' ? '6px' : undefined,
+                    }}
+                  />
                 )}
                 <span className="font-bold text-base text-center" style={{ color: 'var(--color-react-text)' }}>{skill.name}</span>
               </div>
@@ -147,7 +159,18 @@ export default function Skills() {
                 <div className={styles["skill-bar-labels"]}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     {icon && (
-                      <img src={icon.src} alt={skill.name + ' icon'} style={{ width: 32, height: 32, minWidth: 32 }} />
+                      <img
+                        src={icon.src}
+                        alt={skill.name + ' icon'}
+                        style={{
+                          width: 32,
+                          height: 32,
+                          minWidth: 32,
+                          background: skill.name === 'CSS in Js' ? '#fff' : undefined,
+                          borderRadius: skill.name === 'CSS in Js' ? '6px' : undefined,
+                          padding: skill.name === 'CSS in Js' ? '2px' : undefined
+                        }}
+                      />
                     )}
                     <span className="font-bold text-lg" style={{ color: 'var(--color-react-text)' }}>{skill.name}</span>
                   </div>
@@ -176,7 +199,18 @@ export default function Skills() {
                 <div className={styles["skill-bar-labels"]}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     {icon && (
-                      <img src={icon.src} alt={skill.name + ' icon'} style={{ width: 32, height: 32, minWidth: 32 }} />
+                      <img
+                        src={icon.src}
+                        alt={skill.name + ' icon'}
+                        style={{
+                          width: 32,
+                          height: 32,
+                          minWidth: 32,
+                          background: skill.name === 'CSS in Js' ? '#fff' : undefined,
+                          borderRadius: skill.name === 'CSS in Js' ? '6px' : undefined,
+                          padding: skill.name === 'CSS in Js ' ? '2px' : undefined
+                        }}
+                      />
                     )}
                     <span className="font-bold text-lg" style={{ color: 'var(--color-react-text)' }}>{skill.name}</span>
                   </div>

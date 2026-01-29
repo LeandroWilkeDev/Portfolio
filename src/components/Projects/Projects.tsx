@@ -81,7 +81,7 @@ export default function Projects() {
                 </div>
                 <h3 className="text-xl font-semibold text-(--color-react-blue)">{project.title}</h3>
                 <p className="text-(--color-react-text) text-center mb-4">{project.description}</p>
-                <div className="flex gap-4">
+                <div className="flex gap-4 justify-center w-full">
                   <Button onClick={() => window.open(project.live, "_blank")}>Ver Online</Button>
                   <Button onClick={() => window.open(project.github, "_blank")}>Ver GitHub</Button>
                 </div>
@@ -117,7 +117,7 @@ export default function Projects() {
                 </div>
                 <h3 className="text-xl font-semibold text-(--color-react-blue)">{project.title}</h3>
                 <p className="text-(--color-react-text) text-center mb-4">{project.description}</p>
-                <div className="flex gap-4">
+                <div className="flex gap-4 justify-center w-full">
                   <Button onClick={() => window.open(project.live, "_blank")}>Ver Online</Button>
                   <Button onClick={() => window.open(project.github, "_blank")}>Ver GitHub</Button>
                 </div>

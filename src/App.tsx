@@ -3,7 +3,8 @@
 // Componente principal da aplicação
 import './App.css';
 import Header from './components/Header/Header';
-import About from './components/AboutMe/AboutMe';
+import Home from './components/Home/Home';
+import AboutMe from './components/AboutMe/AboutMe';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
 import Footer from './components/Footer/Footer';
@@ -30,12 +31,16 @@ function App() {
       {/* Cabeçalho fixo */}
       <Header />
       <main className="flex flex-col items-center">
+        {/* Seção Home */}
+        <section id="home" className=" w-full ">
+          <Home />
+        </section>
         {/* Seção Sobre Mim */}
-        <section id="about" className=" w-full ">
-          <About />
+        <section id="aboutme" className=" w-full ">
+          <AboutMe />
         </section>
         {/* Seção Skills */}
-        <section id="skills" className=" w-full ">
+        <section id="skills" className=" w-full">
           <Skills />
         </section>
         {/* Seção Projetos */}

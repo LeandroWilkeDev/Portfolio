@@ -1,101 +1,23 @@
 
-// Importa o componente de avatar do usuário
-import Avatar from '../Avatar/Avatar.tsx';
-// Importa o componente de botão reutilizável
-import Button from '../Button/Button.tsx';
-// Importa o componente de máquina de escrever para animação de texto
-import { Typewriter } from 'react-simple-typewriter';
-// Importa hooks do React para estado e efeito colateral
-import { useState, useEffect } from 'react';
-
-
-// Componente principal da seção "Sobre mim"
-export default function About() {
+export default function AboutMe() {
   return (
-    <section id="about" className="flex flex-col items-center justify-center text-center min-h-screen px-2 sm:px-0">
-      {/* Avatar do usuário */}
-      <div className="relative mb-4 mt-4 w-full max-w-xs sm:max-w-full flex justify-center items-center">
-        <Avatar />
-      </div>
-      {/* Animação de texto sequencial */}
-      <div className="mb-2">
-        <SequencedTypewriter />
-      </div>
-      {/* Botões de ação */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full max-w-xs sm:max-w-full mx-auto">
-        <Button onClick={() => window.open('/LeandroWilkeCV.pdf', '_blank')}>Download CV</Button>
-        <Button onClick={() => window.open('mailto:leandro@email.com')}>Entrar em contato</Button>
-      </div>
+    <section id="aboutme" className="flex flex-col items-center justify-center text-center min-h-screen px-2 sm:px-0">
+      {/* Conteúdo da seção Sobre Mim */} 
+      <h2 data-aos-duration="1000" data-aos="fade-up" className="lg:text-6xl font-extrabold mt-10 mb-10 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-purple-500 drop-shadow-lg section-title-shadow">Sobre Mim</h2>
+      <p
+        data-aos-duration="1000" data-aos="zoom-in-up"
+        className="max-w-2xl mx-auto text-lg md:text-xl font-medium  px-6 py-5 mb-4 "
+        style={{
+          textAlign: 'center',
+          letterSpacing: '0.5px',
+          lineHeight: '1.8',
+        }}
+      >
+        Sou um desenvolvedor Front-End apaixonado por criar experiências digitais incríveis.<br /><br />
+        Com foco em <span className="text-blue-400 font-semibold">React</span>, <span className="text-blue-400 font-semibold">TypeScript</span> e outras tecnologias modernas, estou sempre buscando aprender e crescer profissionalmente.<br /><br />
+        Adoro trabalhar em equipe e enfrentar novos desafios que me permitam aprimorar minhas habilidades.<br /><br />
+        Vamos construir algo incrível juntos!
+      </p>
     </section>
-  );
-}
-
-
-// Componente responsável por exibir textos animados em sequência simulando digitação
-function SequencedTypewriter() {
-  // Controla o passo atual da animação
-  const [step, setStep] = useState(0);
-  // Textos a serem exibidos
-  const text1 = "Olá eu sou o";
-  const text2 = "Leandro Wilke";
-  const text3 = "Desenvolvedor Front-End | React JS";
-  // Velocidade de digitação e atraso entre textos
-  const typeSpeed = 90;
-  const delaySpeed = 500;
-
-  // Efeito para avançar os passos da animação conforme o texto termina
-  useEffect(() => {
-    if (step === 0) {
-      const totalTime = text1.length * typeSpeed + delaySpeed + 200;
-      const timer = setTimeout(() => setStep(1), totalTime);
-      return () => clearTimeout(timer);
-    }
-    if (step === 1) {
-      const totalTime = text2.length * typeSpeed + delaySpeed + 200;
-      const timer = setTimeout(() => setStep(2), totalTime);
-      return () => clearTimeout(timer);
-    }
-  }, [step]);
-
-  return (
-    <>
-      {/* Primeira linha: apresentação */}
-      <span className="block text-4xl md:text-5xl font-semibold text-[var(--color-react-text)] mt-2">
-        <Typewriter
-          words={[text1]}
-          loop={1}
-          cursor={false}
-          typeSpeed={typeSpeed}
-          deleteSpeed={50}
-          delaySpeed={delaySpeed}
-        />
-      </span>
-      {/* Segunda linha: nome */}
-      {step >= 1 && (
-        <span className="block text-4xl md:text-5xl font-extrabold text-[var(--color-react-blue)] mt-2">
-          <Typewriter
-            words={[text2]}
-            loop={1}
-            cursor={false}
-            typeSpeed={typeSpeed}
-            deleteSpeed={50}
-            delaySpeed={delaySpeed}
-          />
-        </span>
-      )}
-      {/* Terceira linha: profissão */}
-      {step >= 2 && (
-        <span className="block text-lg md:text-xl font-medium text-gray-400 mt-2 mb-6">
-          <Typewriter
-            words={[text3]}
-            loop={1}
-            cursor={false}
-            typeSpeed={typeSpeed}
-            deleteSpeed={50}
-            delaySpeed={delaySpeed}
-          />
-        </span>
-      )}
-    </>
   );
 }
