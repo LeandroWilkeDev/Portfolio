@@ -3,9 +3,9 @@ import { useState } from "react";
 
 // Lista de links sociais do usuário
 const socialLinks = [
-  { href: "https://github.com/leandrowilke", icon: "github", label: "GitHub" },
-  { href: "https://linkedin.com/in/leandrowilke", icon: "linkedin", label: "LinkedIn" },
-  { href: "https://instagram.com/in/leandrowilke", icon: "instagram", label: "Instagram" },
+  { href: "https://github.com/LeandroWilkeDev", icon: "github", label: "GitHub" },
+  { href: "https://linkedin.com/in/leandro-wilke", icon: "linkedin", label: "LinkedIn" },
+  { href: "https://www.instagram.com/leandrowilkedev/", icon: "instagram", label: "Instagram" },
   { href: "mailto:leandrowilkedev@gmail.com", icon: "email", label: "Email" },
 ];
 

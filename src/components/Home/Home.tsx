@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <section id="home" className="flex flex-col items-center justify-center text-center min-h-screen px-2 sm:px-0" data-aos-duration="1000" data-aos="zoom-in">
       {/* Avatar do usuário */}
-      <div className="relative mb-4 mt-4 w-full max-w-xs sm:max-w-full flex justify-center items-center">
+      <div className="relative mb-4 mt-10 w-full max-w-xs sm:max-w-full flex justify-center items-center">
         <Avatar />
       </div>
       {/* Animação de texto sequencial */}
@@ -60,7 +60,7 @@ function SequencedTypewriter() {
   return (
     <>
       {/* Primeira linha: apresentação */}
-      <span className="block lg:text-6xl md:text-5xl font-semibold text-[var(--color-react-text)] mt-2">
+      <span className="block lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-semibold text-[var(--color-react-text)] mt-2">
         <Typewriter
           words={[text1]}
           loop={1}
@@ -72,7 +72,7 @@ function SequencedTypewriter() {
       </span>
       {/* Segunda linha: nome */}
       {step >= 1 && (
-        <span className="block lg:text-7xl md:text-5xl font-extrabold text-[var(--color-react-blue)] mt-2">
+        <span className="block lg:text-6xl md:text-5xl sm:text-4xl text-4xl font-extrabold text-[var(--color-react-blue)] mt-2">
           <Typewriter
             words={[text2]}
             loop={1}
@@ -85,7 +85,7 @@ function SequencedTypewriter() {
       )}
       {/* Terceira linha: profissão */}
       {step >= 2 && (
-        <span className="block lg:text-2xl md:text-xl font-medium text-gray-400 mt-2 mb-6">
+        <span className="block lg:text-2xl md:text-xl sm:text-xs text-lg font-medium text-gray-400 mt-2 mb-3">
           <Typewriter
             words={[text3]}
             loop={1}
