@@ -8,14 +8,14 @@ export default function Projects() {
     {
       title: "Portfólio Pessoal",
       description: "Site pessoal para apresentar minhas habilidades, como desenvolvedor frontend.",
-      image: "/assets/portfolio.jpg",
+      image: "/assets/dashboard.jpg",
       live: "https://leandrowilke.dev",
       github: "https://github.com/leandrowilke/portfolio"
     },
     {
       title: "App de Tarefas",
       description: "Aplicativo para organização de tarefas diárias, com interface intuitiva e responsiva.",
-      image: "/assets/tarefas.jpg",
+      image: "/assets/dashboard.jpg",
       live: "https://todo.leandrowilke.dev",
       github: "https://github.com/leandrowilke/todo-app"
     },
